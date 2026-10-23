@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fijian Lyrics | Sere Vaka Viti</title>
+  <meta name="description" content="Fijian song lyrics — national anthem, Isa Lei, Bula Maleya and more. Search, read, and celebrate Pacific music.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇫🇯</text></svg>">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Fijian Lyrics</h1>
+      <p class="tagline">Sere Vaka Viti — Lyrics of the Islands</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-section">
+      <input type="text" id="search" placeholder="Search songs, artists, or lyrics..." autofocus>
+      <div class="filters">
+        <button class="filter active" data-type="all">All</button>
+        <button class="filter" data-type="Anthem">Anthem</button>
+        <button class="filter" data-type="Farewell">Farewell</button>
+        <button class="filter" data-type="Welcome">Welcome</button>
+        <button class="filter" data-type="Folk">Folk</button>
+      </div>
+    </section>
+
+    <section id="song-list" class="song-grid"></section>
+
+    <section id="song-detail" class="hidden"></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Built for the Pacific. Traditional & public domain lyrics only. Sources attributed.</p>
+      <p>Part of the Dimau Fiji ecosystem. Expand with more sere.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
