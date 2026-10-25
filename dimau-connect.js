@@ -1,4 +1,4 @@
-/* Dimau Connect v1 — original dependency-free communications launcher.
+/* Dimau Connect v2 — original dependency-free communications launcher.
  * Canonical copy: dimau-platform-standard/communications/dimau-connect.js.
  * This opens the Sota Kece hub; it never forwards account data or starts calls.
  */
@@ -17,7 +17,8 @@
     ['chat', 'Chat', 'Continue a conversation'],
     ['groups', 'Groups', 'Meet with your community'],
     ['boards', 'Boards', 'Share updates and ideas'],
-    ['calls', 'Audio & video calls', 'Choose a room and call type']
+    ['calls', 'Audio call', 'Talk with your group using less data', 'audio'],
+    ['calls', 'Video chat', 'See your group and share your screen', 'video']
   ];
 
   function element(tag, text) {
@@ -26,10 +27,11 @@
     return node;
   }
 
-  function hubURL(view) {
+  function hubURL(view, mode) {
     const selected = options.some(function (entry) { return entry[0] === view; }) ? view : 'chat';
     // No current-page URL, personal data, fragments or arbitrary destinations.
-    return 'https://sotakece.com/communications.html?app=' + encodeURIComponent(app) + '&view=' + selected;
+    const callMode = selected === 'calls' ? '&mode=' + (mode === 'video' ? 'video' : 'audio') : '';
+    return 'https://sotakece.com/communications.html?app=' + encodeURIComponent(app) + '&view=' + selected + callMode;
   }
 
   function stylesheetURL() {
@@ -93,7 +95,7 @@
     links.setAttribute('aria-label', 'Community tools');
     options.forEach(function (entry) {
       const link = element('a');
-      link.href = hubURL(entry[0]);
+      link.href = hubURL(entry[0], entry[3]);
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.referrerPolicy = 'no-referrer';
@@ -140,7 +142,7 @@
   }
 
   window.DimauConnect = Object.freeze({
-    version: '1.0.0',
+    version: '2.0.0',
     open: function () { start(); setOpen(true, document.activeElement); },
     close: function () { setOpen(false, null, true); },
     hubURL: hubURL
